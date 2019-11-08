@@ -17,13 +17,17 @@ class ItemsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an instance of UITableViewCell, with default appearance
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
+                                                 for: indexPath) as! ItemCell
+
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
         let item = itemStore.allItems[indexPath.row]
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        // Configure the cell with the Item
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
         return cell
         }
     @IBAction func addNewItem(_ sender: UIButton) {
@@ -82,4 +86,15 @@ class ItemsViewController: UITableViewController {
         to destinationIndexPath: IndexPath) {
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Get the height of the status bar
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
+    }
+    
 }
