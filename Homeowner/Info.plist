@@ -27,9 +27,12 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>This is the string that will be presented to the user</string>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app uses the
+Photos library to associate photos with items</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
