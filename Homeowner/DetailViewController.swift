@@ -7,7 +7,8 @@
 //
 
 import UIKit
-class DetailViewController: UIViewController, UITextFieldDelegate  {
+class DetailViewController: UIViewController, UITextFieldDelegate,
+UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
@@ -17,18 +18,46 @@ class DetailViewController: UIViewController, UITextFieldDelegate  {
             navigationItem.title = item.name
         }
     }
+    var imageStore: ImageStore!
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    @IBAction func takePicture(_ sender: UIBarButtonItem) {
+        let imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String: Any]) {
+        // Get picked image from info dictionary
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        // Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        imageView.image = image
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBOutlet var imageView: UIImageView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameField.text = item.name
-        serialNumberField.text=item.serialNumber
-        
-           valueField.text=numberFormatter.string(from: NSNumber(value: item.valueInDollars))
-        
+        serialNumberField.text = item.serialNumber
+        valueField.text =
+            numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
+        // Get the item key
+        let key = item.itemKey
+        // If there is an associated image with the item
+        // display it on the image view
+        let imageToDisplay = imageStore.image(forKey: key)
+        imageView.image = imageToDisplay
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     return true

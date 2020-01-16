@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0405062023D0D45500AE5BC2 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0405061F23D0D45500AE5BC2 /* ImageStore.swift */; };
 		040B58222375F406009E075F /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B58212375F406009E075F /* ItemCell.swift */; };
 		048541C02363888800E7FA5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048541BF2363888800E7FA5B /* AppDelegate.swift */; };
 		048541C22363888800E7FA5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048541C12363888800E7FA5B /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0405061F23D0D45500AE5BC2 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		040B58212375F406009E075F /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		048541BC2363888800E7FA5B /* Homeowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeowner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048541BF2363888800E7FA5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				048541F3236398BE00E7FA5B /* ItemStore.swift */,
 				040B58212375F406009E075F /* ItemCell.swift */,
 				048ED50F237F45050081729A /* DetailViewController.swift */,
+				0405061F23D0D45500AE5BC2 /* ImageStore.swift */,
 			);
 			path = Homeowner;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				048541F02363903700E7FA5B /* item.swift in Sources */,
 				048541C22363888800E7FA5B /* ViewController.swift in Sources */,
 				040B58222375F406009E075F /* ItemCell.swift in Sources */,
+				0405062023D0D45500AE5BC2 /* ImageStore.swift in Sources */,
 				048541EE236389D100E7FA5B /* itemsviewcontroller.swift in Sources */,
 				048541F4236398BE00E7FA5B /* ItemStore.swift in Sources */,
 				048541C02363888800E7FA5B /* AppDelegate.swift in Sources */,
